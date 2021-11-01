@@ -5,6 +5,7 @@ import (
 	"log"
 
 	"github.com/jroimartin/gocui"
+	"github.com/shafinmalik/gosetwacom/tgsh"
 	"github.com/shafinmalik/gosetwacom/ttd"
 )
 
@@ -21,11 +22,24 @@ type Entry struct {
 }
 
 func main() {
-	sample0 := Entry{name: "Hello", catg: 0}
-	sample1 := Entry{name: "World", catg: 1}
-	sample2 := Entry{name: "Thing", catg: 1}
-	rep = append(rep, sample0, sample1, sample2)
+	// Get devices
+	devs := tgsh.DeviceData()
+	nems := tgsh.NameData(devs)
 
+	// Current bug: in tgsh.go NameData
+
+	for i := 0; i < len(nems); i++ {
+		dp := ttd.NewDevice(nems[i])
+		sampled := Entry{name: "name", catg: 0, pakg: *dp}
+		rep = append(rep, sampled)
+	}
+
+	//sample0 := Entry{name: "Hello", catg: 0}
+	//sample1 := Entry{name: "World", catg: 1}
+	//sample2 := Entry{name: "Thing", catg: 1}
+	//rep = append(rep, sample0, sample1, sample2)
+
+	// Init CUI
 	g, err := gocui.NewGui(gocui.Output256)
 	if err != nil {
 		log.Panicln(err)

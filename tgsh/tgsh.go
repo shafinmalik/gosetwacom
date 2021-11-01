@@ -7,7 +7,7 @@ import (
 )
 
 // Obtain device data as a slice of strings
-func deviceData() []string {
+func DeviceData() []string {
 	app := "xsetwacom"
 
 	arg0 := "list"
@@ -44,9 +44,9 @@ func getName(ins string) string {
 }
 
 // Returns prepared slice of strings to ttd.go (input the returned values from the above functions)
-func nameData(loadout []string, size int) []string {
+func NameData(loadout []string) []string {
 	var names []string
-	for i := 0; i < size; i++ {
+	for i := 0; i < len(names); i++ {
 		insert := getName(loadout[i])
 		names = append(names, insert)
 	}

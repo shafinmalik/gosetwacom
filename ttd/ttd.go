@@ -2,7 +2,7 @@ package ttd
 
 // Device Struct
 type Device struct {
-	name   string
+	Name   string
 	id     int
 	d_type string
 
@@ -30,4 +30,9 @@ type params struct {
 	TapTime         int
 	CursorProximity int
 	Rotate          string
+}
+
+func NewDevice(dName string) *Device {
+	d := Device{Name: dName}
+	return &d
 }
