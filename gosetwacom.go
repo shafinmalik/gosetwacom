@@ -26,7 +26,8 @@ func main() {
 	devs := tgsh.DeviceData()
 	nems := tgsh.NameData(devs)
 
-	// Current bug: in tgsh.go NameData
+	// Current bug: in tgsh.go NameData: returns empty slice
+	// Supposed to return slice of string with names
 
 	for i := 0; i < len(nems); i++ {
 		dp := ttd.NewDevice(nems[i])
