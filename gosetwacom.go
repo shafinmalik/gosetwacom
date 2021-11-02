@@ -24,6 +24,7 @@ type Entry struct {
 func main() {
 	// Get devices
 	devs := tgsh.DeviceData()
+	// TODO: currently nonfunctional
 	nems := tgsh.NameData(devs)
 
 	// Current bug: in tgsh.go NameData
