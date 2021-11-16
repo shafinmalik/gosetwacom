@@ -9,8 +9,6 @@ import (
 	"github.com/shafinmalik/gosetwacom/ttd"
 )
 
-// FIXED - send to UAT and then merge into main
-
 var (
 	currView      = 0
 	currSelection = -1
@@ -32,8 +30,6 @@ func main() {
 	for i := 0; i < len(nems); i++ {
 		fmt.Println(nems[i])
 	}
-	// EDIT --> BUG HAS BEEN FIXED. SEND TO UAT AND REINSERT
-	// CUI MATERIALS + REMOVE COMMENTS
 
 	for i := 0; i < len(nems); i++ {
 		dp := ttd.NewDevice(nems[i])
