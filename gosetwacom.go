@@ -1,9 +1,13 @@
 package main
 
 import (
+	"fmt"
+
 	"github.com/shafinmalik/gosetwacom/tgsh"
 	"github.com/shafinmalik/gosetwacom/ttd"
 )
+
+// FIXED - send to UAT
 
 var (
 	currView      = 0
@@ -20,8 +24,15 @@ type Entry struct {
 func main() {
 	// Get devices
 	devs := tgsh.DeviceData()
-	nems := tgsh.NameData(devs)
 
+	nems := tgsh.NameData(devs)
+	fmt.Println(nems)
+	for i := 0; i < len(nems); i++ {
+		fmt.Println(nems[i])
+	}
+	// EDIT --> BUG HAS BEEN FIXED. SEND TO UAT AND REINSERT
+	// CUI MATERIALS + REMOVE COMMENTS
+	//
 	// Current bug: in tgsh.go NameData: returns empty slice
 	// Supposed to return slice of string with names
 

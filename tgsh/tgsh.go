@@ -27,27 +27,44 @@ func DeviceData() []string {
 
 // Convert slice of strings into individual strings
 func getName(ins string) string {
-	var name []string
-
 	temp := ins
+	fmt.Println(temp)
+
 	seps := strings.Fields(temp)
 	k := len(seps)
+	var stop int
 	for i := 0; i < k; i++ {
 		if seps[i] == "id:" {
-			name = append(seps[0:i])
-			fmt.Println(name)
+			stop = i
+
 		}
 	}
 
-	devName := strings.Join(name, " ")
+	seps = seps[0:stop]
+
+	devName := strings.Join(seps, " ")
+	fmt.Println(devName)
 	return devName
 }
 
 // Returns prepared slice of strings to ttd.go (input the returned values from the above functions)
 func NameData(loadout []string) []string {
 	var names []string
-	for i := 0; i < len(names); i++ {
+	//fmt.Println(loadout)
+	//fmt.Println(loadout[0])
+	//fmt.Println(loadout[1])
+	//words := strings.Fields(loadout[0])
+	//var stop int
+	//for i := 0; i < len(words); i++ {
+	//	if words[i] == "id:" {
+	//		stop = i
+	//	}
+	//}
+	//words = words[0:stop]
+	//fmt.Println(words)
+	for i := 0; i < len(loadout); i++ {
 		insert := getName(loadout[i])
+		fmt.Println(insert)
 		names = append(names, insert)
 	}
 
