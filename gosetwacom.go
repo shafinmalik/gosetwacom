@@ -32,9 +32,6 @@ func main() {
 	}
 	// EDIT --> BUG HAS BEEN FIXED. SEND TO UAT AND REINSERT
 	// CUI MATERIALS + REMOVE COMMENTS
-	//
-	// Current bug: in tgsh.go NameData: returns empty slice
-	// Supposed to return slice of string with names
 
 	for i := 0; i < len(nems); i++ {
 		dp := ttd.NewDevice(nems[i])
@@ -42,10 +39,4 @@ func main() {
 		rep = append(rep, sampled)
 	}
 
-	//sample0 := Entry{name: "Hello", catg: 0}
-	//sample1 := Entry{name: "World", catg: 1}
-	//sample2 := Entry{name: "Thing", catg: 1}
-	//rep = append(rep, sample0, sample1, sample2)
-
-	// Init CUI
 }

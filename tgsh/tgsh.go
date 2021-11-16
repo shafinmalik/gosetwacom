@@ -50,18 +50,7 @@ func getName(ins string) string {
 // Returns prepared slice of strings to ttd.go (input the returned values from the above functions)
 func NameData(loadout []string) []string {
 	var names []string
-	//fmt.Println(loadout)
-	//fmt.Println(loadout[0])
-	//fmt.Println(loadout[1])
-	//words := strings.Fields(loadout[0])
-	//var stop int
-	//for i := 0; i < len(words); i++ {
-	//	if words[i] == "id:" {
-	//		stop = i
-	//	}
-	//}
-	//words = words[0:stop]
-	//fmt.Println(words)
+
 	for i := 0; i < len(loadout); i++ {
 		insert := getName(loadout[i])
 		fmt.Println(insert)
