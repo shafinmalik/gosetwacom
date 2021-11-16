@@ -24,21 +24,18 @@ type Entry struct {
 func main() {
 	// Get devices
 	devs := tgsh.DeviceData()
-	// TODO: currently nonfunctional
-	nems := tgsh.NameData(devs)
 
-	// Current bug: in tgsh.go NameData
+	nems := tgsh.NameData(devs)
+	fmt.Println(nems)
+	for i := 0; i < len(nems); i++ {
+		fmt.Println(nems[i])
+	}
 
 	for i := 0; i < len(nems); i++ {
 		dp := ttd.NewDevice(nems[i])
-		sampled := Entry{name: "name", catg: 0, pakg: *dp}
+		sampled := Entry{name: nems[i], catg: 0, pakg: *dp}
 		rep = append(rep, sampled)
 	}
-
-	//sample0 := Entry{name: "Hello", catg: 0}
-	//sample1 := Entry{name: "World", catg: 1}
-	//sample2 := Entry{name: "Thing", catg: 1}
-	//rep = append(rep, sample0, sample1, sample2)
 
 	// Init CUI
 	g, err := gocui.NewGui(gocui.Output256)
@@ -56,6 +53,7 @@ func main() {
 	if err := g.MainLoop(); err != nil && err != gocui.ErrQuit {
 		log.Panicln(err)
 	}
+
 }
 
 // Displays main layout with instructions
