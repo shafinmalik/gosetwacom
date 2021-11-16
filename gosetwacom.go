@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"log"
 
 	"github.com/jroimartin/gocui"
 	"github.com/shafinmalik/gosetwacom/tgsh"
@@ -36,8 +37,25 @@ func main() {
 
 	for i := 0; i < len(nems); i++ {
 		dp := ttd.NewDevice(nems[i])
-		sampled := Entry{name: "name", catg: 0, pakg: *dp}
+		sampled := Entry{name: nems[i], catg: 0, pakg: *dp}
 		rep = append(rep, sampled)
+	}
+
+	// Init CUI
+	g, err := gocui.NewGui(gocui.Output256)
+	if err != nil {
+		log.Panicln(err)
+	}
+	defer g.Close()
+
+	g.SetManagerFunc(layout)
+
+	if err := initKeybindings(g); err != nil {
+		log.Panicln(err)
+	}
+
+	if err := g.MainLoop(); err != nil && err != gocui.ErrQuit {
+		log.Panicln(err)
 	}
 
 }
