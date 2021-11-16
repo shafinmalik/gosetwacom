@@ -7,7 +7,7 @@ import (
 	"github.com/shafinmalik/gosetwacom/ttd"
 )
 
-// FIXED - send to UAT and then merge into main.
+// FIXED - send to UAT and then merge into main
 
 var (
 	currView      = 0
