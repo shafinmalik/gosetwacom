@@ -1,3 +1,4 @@
+// deprecated - see bubbletea branch
 package main
 
 import (
